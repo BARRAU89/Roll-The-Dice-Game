@@ -44,6 +44,8 @@ const rollDice = function () {
     document
       .querySelector(`.player--${activePlayer}`)
       .classList.add('player--active');
+
+    //player0Element.classList.toggle('player--active')  //will add the class if it's not ther, and if it is, it will remove it.
   }
 };
 
