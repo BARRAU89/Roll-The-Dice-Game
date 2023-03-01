@@ -58,11 +58,20 @@ const hold = function () {
   document.getElementById(`score--${activePlayer}`).textContent =
     scores[activePlayer];
 
-  // Check if player's score is below 100 and switch players; otherwise the player will win the game.
-  if (scores[activePlayer] < 100) {
+  // Check if player's score is above 100 and the player will wins the game; otherwise switch players
+  if (scores[activePlayer] >= 10) {
+    document
+      .querySelector(`.player--${activePlayer}`)
+      .classList.add('player--winner');
+    document
+      .querySelector(`.player--${activePlayer}`)
+      .classList.remove('player--active');
+    diceElement.classList.add('hidden');
+    btnHold.classList.add('hidden');
+    btnRoll.classList.add('hidden');
+  } else {
     switchPlayer();
     diceElement.classList.add('hidden');
-  } else {
   }
 };
 
