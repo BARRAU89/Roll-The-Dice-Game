@@ -20,12 +20,21 @@ let currentScore = 0;
 let activePlayer = 0; //(0 if player 0 and 1 if player 1)
 const scores = [0, 0];
 
-// ---- Defining Roll dice functionality -----------------------------------//
+// ---- Switching palyers function -----------------------------------------//
+const switchPlayer = function () {
+  document.getElementById(`current--${activePlayer}`).textContent = 0;
+  currentScore = 0;
+  activePlayer = activePlayer === 0 ? 1 : 0;
+  player0Element.classList.toggle('player--active');
+  player1Element.classList.toggle('player--active');
+};
+
+// ---- Defining Roll Dice Button functionality ----------------------------//
 const rollDice = function () {
   //Generate random dice roll
   const dice = Math.trunc(Math.random() * 6) + 1;
 
-  //Discplay the dice image according to random number generated
+  //Display the dice image according to random number generated
   diceElement.classList.remove('hidden');
   diceElement.src = `dice-${dice}.png`;
 
@@ -35,18 +44,26 @@ const rollDice = function () {
     document.getElementById(`current--${activePlayer}`).textContent =
       currentScore;
   } else {
-    document.getElementById(`current--${activePlayer}`).textContent = 0;
-    currentScore = 0;
-    activePlayer = activePlayer === 0 ? 1 : 0;
-    document
-      .querySelector(`.player--${activePlayer === 1 ? 0 : 1}`)
-      .classList.remove('player--active');
-    document
-      .querySelector(`.player--${activePlayer}`)
-      .classList.add('player--active');
-
-    //player0Element.classList.toggle('player--active')  //will add the class if it's not ther, and if it is, it will remove it.
+    switchPlayer();
   }
 };
 
 btnRoll.addEventListener('click', rollDice);
+
+// ---- Defining Hold Button functionality ----------------------------//
+
+const hold = function () {
+  // Add current score to the active's player score
+  scores[activePlayer] += currentScore;
+  document.getElementById(`score--${activePlayer}`).textContent =
+    scores[activePlayer];
+
+  // Check if player's score is below 100 and switch players; otherwise the player will win the game.
+  if (scores[activePlayer] < 100) {
+    switchPlayer();
+    diceElement.classList.add('hidden');
+  } else {
+  }
+};
+
+btnHold.addEventListener('click', hold);
