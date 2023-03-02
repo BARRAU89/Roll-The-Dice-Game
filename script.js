@@ -13,12 +13,13 @@ const player0Element = document.querySelector('.player--0');
 const player1Element = document.querySelector('.player--1');
 
 // ---- Defining initial status --------------------------------------------//
+
 diceElement.classList.add('hidden');
 score0Element.textContent = 0;
 score1Element.textContent = 0;
 let currentScore = 0;
 let activePlayer = 0; //(0 if player 0 and 1 if player 1)
-const scores = [0, 0];
+let scores = [0, 0];
 
 // ---- Switching palyers function -----------------------------------------//
 const switchPlayer = function () {
@@ -76,3 +77,18 @@ const hold = function () {
 };
 
 btnHold.addEventListener('click', hold);
+
+// ---- Defining New Game Button functionality ----------------------------//
+
+const newGame = function () {
+  player0Element.classList.toggle('player--active');
+  player1Element.classList.toggle('player--active');
+  diceElement.classList.add('hidden');
+  score0Element.textContent = 0;
+  score1Element.textContent = 0;
+  currentScore = 0;
+  activePlayer = 0;
+  scores = [0, 0];
+};
+
+btnNew.addEventListener('click', newGame);
