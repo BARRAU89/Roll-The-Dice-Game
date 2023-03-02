@@ -81,12 +81,14 @@ btnHold.addEventListener('click', hold);
 // ---- Defining New Game Button functionality ----------------------------//
 
 const newGame = function () {
-  player0Element.classList.toggle('player--active');
-  player1Element.classList.toggle('player--active');
+  player0Element.classList.add('player--active');
+  player1Element.classList.remove('player--active');
   diceElement.classList.add('hidden');
+  currentScore = 0;
   score0Element.textContent = 0;
   score1Element.textContent = 0;
-  currentScore = 0;
+  currentScore0Element.textContent = 0;
+  currentScore1Element.textContent = 0;
   activePlayer = 0;
   scores = [0, 0];
 };
