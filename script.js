@@ -60,7 +60,7 @@ const hold = function () {
     scores[activePlayer];
 
   // Check if player's score is above 100 and the player will wins the game; otherwise switch players
-  if (scores[activePlayer] >= 10) {
+  if (scores[activePlayer] >= 100) {
     document
       .querySelector(`.player--${activePlayer}`)
       .classList.add('player--winner');
