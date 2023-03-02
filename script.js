@@ -14,12 +14,25 @@ const player1Element = document.querySelector('.player--1');
 
 // ---- Defining initial status --------------------------------------------//
 
-diceElement.classList.add('hidden');
-score0Element.textContent = 0;
-score1Element.textContent = 0;
-let currentScore = 0;
-let activePlayer = 0; //(0 if player 0 and 1 if player 1)
-let scores = [0, 0];
+let currentScore, scores, activePlayer; //(0 if player 0 and 1 if player 1)
+
+const newGame = function () {
+  player0Element.classList.add('player--active');
+  player1Element.classList.remove('player--active');
+  player0Element.classList.remove('player--winner');
+  player1Element.classList.remove('player--winner');
+  diceElement.classList.add('hidden');
+
+  currentScore = 0;
+  activePlayer = 0;
+  scores = [0, 0];
+
+  score0Element.textContent = 0;
+  score1Element.textContent = 0;
+  currentScore0Element.textContent = 0;
+  currentScore1Element.textContent = 0;
+};
+newGame();
 
 // ---- Switching palyers function -----------------------------------------//
 const switchPlayer = function () {
@@ -79,18 +92,5 @@ const hold = function () {
 btnHold.addEventListener('click', hold);
 
 // ---- Defining New Game Button functionality ----------------------------//
-
-const newGame = function () {
-  player0Element.classList.add('player--active');
-  player1Element.classList.remove('player--active');
-  diceElement.classList.add('hidden');
-  currentScore = 0;
-  score0Element.textContent = 0;
-  score1Element.textContent = 0;
-  currentScore0Element.textContent = 0;
-  currentScore1Element.textContent = 0;
-  activePlayer = 0;
-  scores = [0, 0];
-};
 
 btnNew.addEventListener('click', newGame);
