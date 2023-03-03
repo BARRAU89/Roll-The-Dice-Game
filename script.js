@@ -21,6 +21,8 @@ const newGame = function () {
   player1Element.classList.remove('player--active');
   player0Element.classList.remove('player--winner');
   player1Element.classList.remove('player--winner');
+  btnHold.classList.remove('hidden');
+  btnRoll.classList.remove('hidden');
   diceElement.classList.add('hidden');
 
   currentScore = 0;
@@ -83,6 +85,8 @@ const hold = function () {
     diceElement.classList.add('hidden');
     btnHold.classList.add('hidden');
     btnRoll.classList.add('hidden');
+    currentScore0Element.textContent = 0;
+    currentScore1Element.textContent = 0;
   } else {
     switchPlayer();
     diceElement.classList.add('hidden');
